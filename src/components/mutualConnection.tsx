@@ -9,7 +9,9 @@ const MutualConnection = ({
 }: TypeMutualConnectionComponent) => {
   const person1Ref = useRef<HTMLSelectElement>(null);
   const person2Ref = useRef<HTMLSelectElement>(null);
-  const [connections, setConnections] = useState<string[][] | undefined>();
+  const [connections, setConnections] = useState<string[][] | null | undefined>(
+    null
+  );
 
   const handleFindConnection = () => {
     if (!person1Ref.current?.value) return;
@@ -40,7 +42,7 @@ const MutualConnection = ({
           Find
         </button>
       </div>
-      {connections ? (
+      {connections && (
         <div className="p-4 flex flex-col gap-4">
           {connections.map((path, ind) => (
             <div key={ind} className="flex items-center">
@@ -49,9 +51,10 @@ const MutualConnection = ({
             </div>
           ))}
         </div>
-      ) : (
-        "No Connections"
       )}
+      {connections !== null && connections === undefined ? (
+        <div className="p-2 underline">No Connections</div>
+      ) : null}
     </div>
   );
 };
