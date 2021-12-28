@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { TypeMutualConnectionComponent } from "../utils/types";
 
 const MutualConnection = ({
   findMutualConnection,

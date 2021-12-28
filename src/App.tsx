@@ -4,8 +4,6 @@ import MutualConnection from "./components/mutualConnection";
 import Network from "./utils/network";
 import Person from "./utils/person";
 
-import { TypePeople, TypePerson } from "./utils/types";
-
 function App() {
   const [network, setNetwork] = useState<TypePeople>({});
 

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { NPerson } from "../utils/person";
-import { TypeAddPersonComponent } from "../utils/types";
+
 const AddPerson = ({
   addToNetwork,
   connectTwoPeople,
