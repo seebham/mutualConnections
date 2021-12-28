@@ -18,7 +18,6 @@ function App() {
   }, [network]);
 
   const loadSampleData = () => {
-    console.log("trigged");
     localStorage.setItem("networkData", JSON.stringify(network));
     setNetwork(sampleData);
   };
