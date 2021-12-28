@@ -1,5 +1,8 @@
 import { useEffect } from "react";
-import { NPerson } from "../utils/person";
+
+export const NPerson = (name: string) => {
+  return { name: name, connectionList: [] };
+};
 
 const AddPerson = ({
   addToNetwork,

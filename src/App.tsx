@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import AddPerson from "./components/addPerson";
 import MutualConnection from "./components/mutualConnection";
-import Network from "./utils/network";
-import Person from "./utils/person";
 
 function App() {
   const [network, setNetwork] = useState<TypePeople>({});
@@ -15,7 +13,7 @@ function App() {
   const connectTwoPeople = (person1: string, person2: string) => {
     network[person1].connectionList.push(network[person2]);
 
-    // For Undirected graph which this should be because friendship is always two-way!
+    // Below line is for Undirected graph which this should be because friendship is always two-way!
     // But after observing the sample outputs I am assuming this is a one-way relationship, so directed graph XD
     // network[person2].connectionList.push(network[person1]);
 
@@ -56,37 +54,6 @@ function App() {
     }
     return paths;
   };
-
-  useEffect(() => {
-    const network = new Network({});
-
-    const Sameer = new Person("Sameer");
-    network.addToNetwork(Sameer);
-
-    const Aayushi = new Person("Aayushi");
-    network.addToNetwork(Aayushi);
-    Sameer.connect(Aayushi);
-
-    const Bhaskar = new Person("Bhaskar");
-    network.addToNetwork(Bhaskar);
-    Aayushi.connect(Bhaskar);
-
-    const Kamalnath = new Person("Kamalnath");
-    network.addToNetwork(Kamalnath);
-    Sameer.connect(Kamalnath);
-
-    const ShantiKumar = new Person("ShantiKumar");
-    network.addToNetwork(ShantiKumar);
-    Kamalnath.connect(ShantiKumar);
-
-    ShantiKumar.connect(Bhaskar);
-
-    // console.log(network.people);
-    // setNetwork(network);
-
-    // console.log(network.DFS(Sameer, Bhaskar));
-    // console.log(network.DFS(Kamalnath, Bhaskar));
-  }, []);
 
   useEffect(() => {
     console.log(network);
