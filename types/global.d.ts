@@ -12,6 +12,7 @@ declare type TypeAddPersonComponent = {
 };
 
 declare type TypeMutualConnectionComponent = {
+  people: string[];
   findMutualConnection: (
     person1: string,
     person2: string,

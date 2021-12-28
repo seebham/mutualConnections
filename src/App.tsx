@@ -6,6 +6,16 @@ import NetworkView from "./components/networkView";
 function App() {
   const [network, setNetwork] = useState<TypePeople>({});
 
+  useEffect(() => {
+    if (!localStorage.getItem("networkData")) return;
+    let data = JSON.parse(localStorage.getItem("networkData")!);
+    setNetwork(data);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("networkData", JSON.stringify(network));
+  }, [network]);
+
   const addPersonToNetwork = (personName: string) => {
     let newPerson = NPerson(personName);
     network[personName] = newPerson;
@@ -57,18 +67,21 @@ function App() {
     return paths;
   };
 
-  useEffect(() => {
-    console.log(network);
-  }, [network]);
-
   return (
     <main className="container mx-auto p-2 flex flex-col gap-2">
-      <NetworkView networkData={network} addToNetwork={addPersonToNetwork} />
-      <AddPerson
+      <NetworkView
+        networkData={network}
         addToNetwork={addPersonToNetwork}
         connectTwoPeople={connectTwoPeople}
       />
-      <MutualConnection findMutualConnection={findMutualConnection} />
+      {/* <AddPerson
+        addToNetwork={addPersonToNetwork}
+        connectTwoPeople={connectTwoPeople}
+      /> */}
+      <MutualConnection
+        people={Object.keys(network)}
+        findMutualConnection={findMutualConnection}
+      />
     </main>
   );
 }
