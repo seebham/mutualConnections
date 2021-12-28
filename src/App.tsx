@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
-import AddPerson, { NPerson } from "./components/addPerson";
 import MutualConnection from "./components/mutualConnection";
 import NetworkView from "./components/networkView";
 import sampleData from "../sampleData";
+
+const NPerson = (name: string) => {
+  return { name: name, connectionList: [] };
+};
 
 function App() {
   const [network, setNetwork] = useState<TypePeople>({});
