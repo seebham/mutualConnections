@@ -24,3 +24,7 @@ export default class Person {
     return this.connectionList.some((edge) => edge === person);
   }
 }
+
+export const NPerson = (name: string) => {
+  return { name: name, connectionList: [] };
+};
