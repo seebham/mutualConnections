@@ -5,7 +5,7 @@ const MutualConnection = ({
 }: TypeMutualConnectionComponent) => {
   useEffect(() => {
     // console.log(findMutualConnection("Sameer", "Bhaskar"));
-    console.log(findMutualConnection("Kamalnath", "Bhaskar"));
+    // console.log(findMutualConnection("Kamalnath", "Bhaskar"));
   }, []);
 
   return (

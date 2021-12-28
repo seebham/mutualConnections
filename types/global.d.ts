@@ -7,7 +7,7 @@ declare type TypePeople = {
 };
 
 declare type TypeAddPersonComponent = {
-  addToNetwork: (person: TypePerson) => void;
+  addToNetwork: (personName: string) => void;
   connectTwoPeople: (person1: string, person2: string) => void;
 };
 

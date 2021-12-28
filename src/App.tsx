@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import AddPerson from "./components/addPerson";
+import AddPerson, { NPerson } from "./components/addPerson";
 import MutualConnection from "./components/mutualConnection";
+import NetworkView from "./components/networkView";
 
 function App() {
   const [network, setNetwork] = useState<TypePeople>({});
 
-  const addPersonToNetwork = (person: TypePerson) => {
-    network[person.name] = person;
+  const addPersonToNetwork = (personName: string) => {
+    let newPerson = NPerson(personName);
+    network[personName] = newPerson;
     setNetwork({ ...network });
   };
 
@@ -61,6 +63,7 @@ function App() {
 
   return (
     <main className="container mx-auto p-2 flex flex-col gap-2">
+      <NetworkView networkData={network} addToNetwork={addPersonToNetwork} />
       <AddPerson
         addToNetwork={addPersonToNetwork}
         connectTwoPeople={connectTwoPeople}
