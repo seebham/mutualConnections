@@ -33,7 +33,7 @@ function App() {
     // console.log(network.DFS(Kamalnath, Bhaskar));
   }, []);
 
-  return <h1 className="App">Hello</h1>;
+  return <div className="text-2xl text-center p-2">Hello</div>;
 }
 
 export default App;
