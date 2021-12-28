@@ -27,7 +27,7 @@ const PersonInNetworkView = ({
       <Vertex name={personName} />
       <div className="flex-1 flex items-center flex-row flex-wrap gap-2">
         {connectionList.length > 0 ? (
-          <div>--&gt; Friends:</div>
+          <div>⟶ Friends:</div>
         ) : (
           <div>No Connections</div>
         )}
@@ -102,17 +102,19 @@ const NetworkView = ({
           ))
         : null}
       <div className="p-4 flex flex-row items-center gap-4">
-        <div
-          className={`p-2 px-4 border-2 border-gray-600 rounded-full w-fit h-fit cursor-pointer ${
-            addPerson ? "bg-gray-50 text-black" : "bg-gray-600 text-gray-50"
-          }`}
-          onClick={() => setAddPerson((state) => !state)}
-        >
-          Add Person
-        </div>
+        {!addPerson && (
+          <div
+            className={
+              "p-2 px-4 border-2 border-gray-600 rounded-full w-fit h-fit cursor-pointer bg-gray-600 text-gray-50"
+            }
+            onClick={() => setAddPerson((state) => !state)}
+          >
+            Add Person
+          </div>
+        )}
 
         {addPerson ? (
-          <div className="flex flex-col items-end border-2 border-gray-600 p-2 border-dashed">
+          <div className="flex flex-col border-2 border-gray-600 p-2 border-dashed">
             <InputField
               inputRef={addInputFieldRef}
               id="personName"
@@ -122,12 +124,20 @@ const NetworkView = ({
               type="text"
               required
             />
-            <button
-              className="mt-1 px-4 py-1 bg-black text-gray-50 rounded-lg"
-              onClick={handleAddPerson}
-            >
-              Add
-            </button>
+            <div className="flex justify-between">
+              <button
+                className="mt-1 px-4 underline rounded-lg"
+                onClick={() => setAddPerson((state) => !state)}
+              >
+                Cancel
+              </button>
+              <button
+                className="mt-1 px-4 py-1 bg-black text-gray-50 rounded-lg"
+                onClick={handleAddPerson}
+              >
+                Add
+              </button>
+            </div>
           </div>
         ) : null}
       </div>
