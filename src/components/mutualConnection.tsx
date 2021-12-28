@@ -42,7 +42,7 @@ const MutualConnection = ({
           Find
         </button>
       </div>
-      {connections && (
+      {connections && connections.length > 0 && (
         <div className="p-4 flex flex-col gap-4">
           {connections.map((path, ind) => (
             <div key={ind} className="flex items-center">
@@ -52,7 +52,8 @@ const MutualConnection = ({
           ))}
         </div>
       )}
-      {connections !== null && connections === undefined ? (
+      {(connections !== null && connections === undefined) ||
+      connections?.length === 0 ? (
         <div className="p-2 underline">No Connections</div>
       ) : null}
     </div>
