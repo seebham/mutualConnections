@@ -59,12 +59,14 @@ type TypeNetworkViewComponent = {
   networkData: TypePeople;
   addToNetwork: (personName: string) => void;
   connectTwoPeople: (person1: string, person2: string) => void;
+  loadSampleData: () => void;
 };
 
 const NetworkView = ({
   networkData,
   addToNetwork,
   connectTwoPeople,
+  loadSampleData,
 }: TypeNetworkViewComponent) => {
   const [addPerson, setAddPerson] = useState(false);
   const addInputFieldRef = useRef<HTMLInputElement>(null);
@@ -140,6 +142,14 @@ const NetworkView = ({
             </div>
           </div>
         ) : null}
+        <div
+          className={
+            "p-2 px-4 border-2 border-gray-600 rounded-full w-fit h-fit cursor-pointer bg-gray-600 text-gray-50"
+          }
+          onClick={loadSampleData}
+        >
+          Load Sample Data
+        </div>
       </div>
     </div>
   );

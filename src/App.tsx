@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AddPerson, { NPerson } from "./components/addPerson";
 import MutualConnection from "./components/mutualConnection";
 import NetworkView from "./components/networkView";
+import sampleData from "../sampleData";
 
 function App() {
   const [network, setNetwork] = useState<TypePeople>({});
@@ -15,6 +16,12 @@ function App() {
   useEffect(() => {
     localStorage.setItem("networkData", JSON.stringify(network));
   }, [network]);
+
+  const loadSampleData = () => {
+    console.log("trigged");
+    localStorage.setItem("networkData", JSON.stringify(network));
+    setNetwork(sampleData);
+  };
 
   const addPersonToNetwork = (personName: string) => {
     let newPerson = NPerson(personName);
@@ -73,6 +80,7 @@ function App() {
         networkData={network}
         addToNetwork={addPersonToNetwork}
         connectTwoPeople={connectTwoPeople}
+        loadSampleData={loadSampleData}
       />
       {/* <AddPerson
         addToNetwork={addPersonToNetwork}
