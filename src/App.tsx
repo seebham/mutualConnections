@@ -36,7 +36,7 @@ function App() {
     person1: string,
     person2: string,
     visited?: Set<TypePerson>,
-    paths?: string[][]
+    paths?: string[][] | undefined
   ) => {
     let start = network[person1];
     let end = network[person2];

@@ -17,6 +17,6 @@ declare type TypeMutualConnectionComponent = {
     person1: string,
     person2: string,
     visited?: Set<TypePerson>,
-    paths?: string[][]
-  ) => void;
+    paths?: string[][] | undefined
+  ) => string[][] | undefined;
 };

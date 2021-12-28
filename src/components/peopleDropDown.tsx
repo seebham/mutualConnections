@@ -4,17 +4,22 @@ const PeopleDropdown = ({
   people,
   inputRef,
   exclude,
+  hideLabel,
 }: {
   people: string[];
   inputRef: RefObject<HTMLSelectElement>;
   exclude?: string;
+  hideLabel?: boolean;
 }) => {
   return (
     <div>
       <div>
-        <label htmlFor="people" className="mr-2">
-          Choose a Person:{" "}
-        </label>
+        {!hideLabel && (
+          <label htmlFor="people" className="mr-2">
+            Choose a Person:{" "}
+          </label>
+        )}
+
         <select
           name="people"
           id="people"
