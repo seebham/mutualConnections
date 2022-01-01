@@ -110,10 +110,6 @@ function App() {
         connectTwoPeople={connectTwoPeople}
         loadSampleData={loadSampleData}
       />
-      {/* <AddPerson
-        addToNetwork={addPersonToNetwork}
-        connectTwoPeople={connectTwoPeople}
-      /> */}
       <MutualConnection
         people={Object.keys(network)}
         findMutualConnection={handleFindMutualConnection}
