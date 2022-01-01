@@ -22,7 +22,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("networkData", JSON.stringify(network));
+    try {
+      localStorage.setItem("networkData", JSON.stringify(network));
+    } catch (err: unknown) {
+      console.error(err);
+    }
   }, [network]);
 
   const loadSampleData = () => {
