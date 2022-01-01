@@ -9,6 +9,11 @@ const NPerson = (name: string) => {
 
 function App() {
   const [network, setNetwork] = useState<TypePeople>({});
+  const [paths, setPaths] = useState<string[][]>();
+
+  useEffect(() => {
+    console.log(paths);
+  }, [paths]);
 
   useEffect(() => {
     if (!localStorage.getItem("networkData")) return;
@@ -44,36 +49,53 @@ function App() {
   const findMutualConnection = (
     person1: string,
     person2: string,
-    visited?: Set<TypePerson>,
-    paths?: string[][] | undefined
+    visited: Set<TypePerson>,
+    path: string[]
   ) => {
     let start = network[person1];
     let end = network[person2];
 
     // keep going until a leaf node or end node is found
 
-    // console.log("Visiting node: ", start.value);
-    if (!paths) paths = new Array([]);
-    if (!visited) visited = new Set();
+    if (!path) return;
+    if (!visited) return;
+
+    visited.add(start);
+    path.push(start.name);
 
     // base case
     if (start.name === end.name) {
       // console.log("Found");
-      paths[paths.length - 1].push(start.name);
-      paths.push([]);
-      return;
-    }
 
-    visited.add(start);
-
-    // recursive case
-    for (const connection of start.connectionList) {
-      if (!visited.has(connection)) {
-        paths[paths.length - 1].push(start.name);
-        findMutualConnection(connection.name, end.name, visited, paths);
+      const tempPath = [...path];
+      setPaths((prevPaths) => {
+        if (!prevPaths) {
+          let arr: string[][] = new Array();
+          arr.push([...tempPath]);
+          return arr;
+        }
+        return [...prevPaths, tempPath];
+      });
+    } else {
+      // recursive case
+      for (const connection of start.connectionList) {
+        if (!visited.has(connection)) {
+          findMutualConnection(connection.name, end.name, visited, path);
+        }
       }
     }
-    return paths;
+
+    path.pop();
+    visited.delete(start);
+  };
+
+  const handleFindMutualConnection = (person1: string, person2: string) => {
+    setPaths(undefined);
+
+    let visited = new Set<TypePerson>();
+    let path: string[] = new Array();
+
+    findMutualConnection(person1, person2, visited, path);
   };
 
   return (
@@ -90,7 +112,8 @@ function App() {
       /> */}
       <MutualConnection
         people={Object.keys(network)}
-        findMutualConnection={findMutualConnection}
+        findMutualConnection={handleFindMutualConnection}
+        foundPaths={paths}
       />
     </main>
   );

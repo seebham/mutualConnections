@@ -13,10 +13,6 @@ declare type TypeAddPersonComponent = {
 
 declare type TypeMutualConnectionComponent = {
   people: string[];
-  findMutualConnection: (
-    person1: string,
-    person2: string,
-    visited?: Set<TypePerson>,
-    paths?: string[][] | undefined
-  ) => string[][] | undefined;
+  findMutualConnection: (person1: string, person2: string) => void;
+  foundPaths: string[][] | undefined;
 };

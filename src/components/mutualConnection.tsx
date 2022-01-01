@@ -6,24 +6,17 @@ import Vertex from "./vertex";
 const MutualConnection = ({
   people,
   findMutualConnection,
+  foundPaths,
 }: TypeMutualConnectionComponent) => {
   const person1Ref = useRef<HTMLSelectElement>(null);
   const person2Ref = useRef<HTMLSelectElement>(null);
-  const [connections, setConnections] = useState<string[][] | null | undefined>(
-    null
-  );
 
   const handleFindConnection = () => {
     if (!person1Ref.current?.value) return;
     if (!person2Ref.current?.value) return;
 
-    let conn: string[][] | undefined = findMutualConnection(
-      person1Ref.current.value,
-      person2Ref.current.value
-    );
-    conn?.pop();
-    console.log(conn);
-    setConnections(conn);
+    findMutualConnection(person1Ref.current.value, person2Ref.current.value);
+    console.log(foundPaths);
   };
 
   return (
@@ -42,9 +35,9 @@ const MutualConnection = ({
           Find
         </button>
       </div>
-      {connections && connections.length > 0 && (
+      {foundPaths && foundPaths.length > 0 && (
         <div className="p-4 flex flex-col gap-4">
-          {connections.map((path, ind) => (
+          {foundPaths.map((path, ind) => (
             <div key={ind} className="flex items-center">
               <div className="mr-4">{ind + 1}:</div>
               <Path path={path} />
@@ -52,8 +45,8 @@ const MutualConnection = ({
           ))}
         </div>
       )}
-      {(connections !== null && connections === undefined) ||
-      connections?.length === 0 ? (
+      {(foundPaths !== null && foundPaths === undefined) ||
+      foundPaths?.length === 0 ? (
         <div className="p-2 underline">No Connections</div>
       ) : null}
     </div>
