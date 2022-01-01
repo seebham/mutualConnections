@@ -41,7 +41,13 @@ function App() {
   };
 
   const connectTwoPeople = (person1: string, person2: string) => {
-    network[person1].connectionList.push(person2);
+    let person1ConnectionList = network[person1].connectionList;
+
+    if (person1ConnectionList.indexOf(person2) !== -1) {
+      console.info("They are already connected!");
+      return;
+    }
+    person1ConnectionList.push(person2);
 
     // Below line is for Undirected graph which this should be because friendship is always two-way!
     // But after observing the sample outputs I am assuming this is a one-way relationship, so directed graph XD
