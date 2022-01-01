@@ -41,11 +41,11 @@ function App() {
   };
 
   const connectTwoPeople = (person1: string, person2: string) => {
-    network[person1].connectionList.push(network[person2]);
+    network[person1].connectionList.push(person2);
 
     // Below line is for Undirected graph which this should be because friendship is always two-way!
     // But after observing the sample outputs I am assuming this is a one-way relationship, so directed graph XD
-    // network[person2].connectionList.push(network[person1]);
+    // network[person2].connectionList.push(person1);
 
     setNetwork({ ...network });
   };
@@ -53,7 +53,7 @@ function App() {
   const findMutualConnection = (
     person1: string,
     person2: string,
-    visited: Set<TypePerson>,
+    visited: Set<string>,
     path: string[]
   ) => {
     let start = network[person1];
@@ -64,7 +64,7 @@ function App() {
     if (!path) return;
     if (!visited) return;
 
-    visited.add(start);
+    visited.add(start.name);
     path.push(start.name);
 
     // base case
@@ -84,19 +84,19 @@ function App() {
       // recursive case
       for (const connection of start.connectionList) {
         if (!visited.has(connection)) {
-          findMutualConnection(connection.name, end.name, visited, path);
+          findMutualConnection(connection, end.name, visited, path);
         }
       }
     }
 
     path.pop();
-    visited.delete(start);
+    visited.delete(start.name);
   };
 
   const handleFindMutualConnection = (person1: string, person2: string) => {
     setPaths(undefined);
 
-    let visited = new Set<TypePerson>();
+    let visited = new Set<string>();
     let path: string[] = new Array();
 
     findMutualConnection(person1, person2, visited, path);

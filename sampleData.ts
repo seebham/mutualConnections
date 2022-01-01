@@ -1,40 +1,11 @@
 const sampleData = {
   Sameer: {
     name: "Sameer",
-    connectionList: [
-      {
-        name: "Aayushi",
-        connectionList: [
-          {
-            name: "Bhaskar",
-            connectionList: [],
-          },
-        ],
-      },
-      {
-        name: "Kamalnath",
-        connectionList: [
-          {
-            name: "Shantikumar",
-            connectionList: [
-              {
-                name: "Bhaskar",
-                connectionList: [],
-              },
-            ],
-          },
-        ],
-      },
-    ],
+    connectionList: ["Aayushi", "Kamalnath"],
   },
   Aayushi: {
     name: "Aayushi",
-    connectionList: [
-      {
-        name: "Bhaskar",
-        connectionList: [],
-      },
-    ],
+    connectionList: ["Bhaskar"],
   },
   Bhaskar: {
     name: "Bhaskar",
@@ -42,26 +13,11 @@ const sampleData = {
   },
   Kamalnath: {
     name: "Kamalnath",
-    connectionList: [
-      {
-        name: "Shantikumar",
-        connectionList: [
-          {
-            name: "Bhaskar",
-            connectionList: [],
-          },
-        ],
-      },
-    ],
+    connectionList: ["Shantikumar"],
   },
   Shantikumar: {
     name: "Shantikumar",
-    connectionList: [
-      {
-        name: "Bhaskar",
-        connectionList: [],
-      },
-    ],
+    connectionList: ["Bhaskar"],
   },
 };
 

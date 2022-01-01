@@ -1,6 +1,6 @@
 declare type TypePerson = {
   name: string;
-  connectionList: TypePerson[];
+  connectionList: string[];
 };
 declare type TypePeople = {
   [name: string]: TypePerson;

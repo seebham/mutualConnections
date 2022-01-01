@@ -5,7 +5,7 @@ import Vertex from "./vertex";
 
 type TypePersonInNetworkView = {
   personName: string;
-  connectionList: TypePerson[];
+  connectionList: string[];
   people: string[];
   connectTwoPeople: (person1: string, person2: string) => void;
 };
@@ -32,8 +32,8 @@ const PersonInNetworkView = ({
           <div>No Connections</div>
         )}
         {connectionList.map((connection, ind) => (
-          <div key={connection.name} className="flex flex-row flex-wrap gap-1">
-            <Vertex name={connection.name} />{" "}
+          <div key={connection} className="flex flex-row flex-wrap gap-1">
+            <Vertex name={connection} />{" "}
             {/* {ind === Object.entries(networkData).length ? ", " : ""} */}
           </div>
         ))}
