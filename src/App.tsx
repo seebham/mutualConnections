@@ -48,10 +48,7 @@ function App() {
       return;
     }
     person1ConnectionList.push(person2);
-
-    // Below line is for Undirected graph which this should be because friendship is always two-way!
-    // But after observing the sample outputs I am assuming this is a one-way relationship, so directed graph XD
-    // network[person2].connectionList.push(person1);
+    network[person2].connectionList.push(person1);
 
     setNetwork({ ...network });
   };

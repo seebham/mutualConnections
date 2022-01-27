@@ -1,23 +1,23 @@
 const sampleData = {
   Sameer: {
     name: "Sameer",
-    connectionList: ["Aayushi", "Kamalnath"],
+    connectionList: ["Ayushi", "Kamalnath"],
   },
-  Aayushi: {
-    name: "Aayushi",
-    connectionList: ["Bhaskar"],
+  Ayushi: {
+    name: "Ayushi",
+    connectionList: ["Sameer", "Bhaskar"],
   },
   Bhaskar: {
     name: "Bhaskar",
-    connectionList: [],
+    connectionList: ["Ayushi", "Shantikumar"],
   },
   Kamalnath: {
     name: "Kamalnath",
-    connectionList: ["Shantikumar"],
+    connectionList: ["Sameer", "Shantikumar"],
   },
   Shantikumar: {
     name: "Shantikumar",
-    connectionList: ["Bhaskar"],
+    connectionList: ["Kamalnath", "Bhaskar"],
   },
 };
 
