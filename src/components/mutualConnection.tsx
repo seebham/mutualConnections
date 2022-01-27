@@ -16,7 +16,7 @@ const MutualConnection = ({
     if (!person2Ref.current?.value) return;
 
     findMutualConnection(person1Ref.current.value, person2Ref.current.value);
-    console.log(foundPaths);
+    // console.log(foundPaths);
   };
 
   return (

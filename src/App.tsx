@@ -12,10 +12,6 @@ function App() {
   const [paths, setPaths] = useState<string[][]>();
 
   useEffect(() => {
-    console.log(paths);
-  }, [paths]);
-
-  useEffect(() => {
     if (!localStorage.getItem("networkData")) return;
     let data = JSON.parse(localStorage.getItem("networkData")!);
     setNetwork(data);
